@@ -1,0 +1,141 @@
+\documentclass[11pt, a4paper]{moderncv}
+
+\moderncvstyle{banking} % 'banking' style is clean and supports themes
+\moderncvcolor{red}     % Sets the red theme
+
+\usepackage[scale=0.8,
+            top=1.5cm,
+            bottom=1.5cm,
+            left=1.25cm,
+            right=1.25cm]{geometry} % For spacing
+\usepackage{fontawesome5}          % For icons
+
+% Changing the size of my name
+\renewcommand*{\namefont}{\fontsize{16}{18}\selectfont}
+
+% Personal information
+\name{Amirhossein}{Najafizadeh}
+\address{East Setauket, NY}
+\phone{+1 (123) 456-7890}
+\email{Amirhossein.Najafizadeh}
+\social[linkedin]{linkedin.com/in/amirnhnajafiz21}
+\social[github]{github.com/amirhnajafiz}
+
+\begin{document}
+
+% Building the title (-1cm is needed to reduce the next space)
+\makecvtitle
+\vspace{-1cm}
+
+\section{Education}
+\cventry{Aug 2024 -- Aug 2029}{Ph.D. in Computer Science}{Stony Brook University}{Stony Brook, New York}{GPA: 3.92}{
+    \textbf{Relevant Coursework:} System Security, Distributed Systems, Computer Networks, Visualization\\
+    \textbf{Scholarships:} Awarded a one-year full scholarship for being among the top applicants}
+\cventry{Aug 2018 -- Dec 2023}{Bachelor of Engineering in Computer Engineering}{Amirkabir University (Tehran Polytechnic)}{Tehran, Iran}{GPA: 3.63}{
+    \textbf{Relevant Coursework:} Cloud Computing, Data Security, Database Design, Web Engineering\\
+    \textbf{Honors:} Graduated among top 10\% of class 2024}
+
+\section{Technical Skills}
+\cvitem{Programming Languages}{Go, Python, ShellScript (5 years), C, JavaScript (4 years), C++, Java (2 years)}
+\cvitem{Operating Systems}{Linux, Ubuntu, Debian, MacOS, Windows (5 years)}
+\cvitem{Cloud Systems}{Kubernetes, OpenShift (3 years), OpenStack, VMware vSphere (1 year)}
+\cvitem{Storage Systems}{SQL/MySQL, PostgreSQL, MongoDB, Redis (4 years), Prometheus (2 years)}
+
+\section{Professional Experience}
+\cventry{Nov 2023 -- Aug 2024}{Cloud Engineer}{Snapp Cloud!}{Tehran, Iran}{}{
+    \begin{itemize}
+        \item Maintained and deployed Operators on Kubernetes and OpenShift platforms, utilizing tools such as OLM and Helm Charts for applications including StreamZ, RedisCluster, and PostgreSQL.
+        \item Developed Kubernetes Operators, including the Ceph-S3 Operator and Quota Operator.
+        \item Managed centralized monitoring tools such as Prometheus, Grafana, Loki, and Thanos.
+        \item Facilitated application delivery using ArgoCD for both public and private applications.
+        \item Managed over 1,000 VMs, 200 bare-metal servers, and 5 clusters using OpenShift and OpenStack.
+    \end{itemize}}
+\cventry{Nov 2021 -- Oct 2023}{Software Engineer}{Snapp}{Tehran, Iran}{}{
+    \begin{itemize}
+        \item Manage central message queues and real-time services, utilizing technologies such as NATS, EMQX, and Kafka.
+        \item Administer the shared cabs’ panel and reporting services using Go, Redis, and MySQL.
+        \item Implement user authentication for EMQX clusters using Go.
+        \item Develop and support in-app communication tools, including call and chat functionalities using Go and WebRTC.
+    \end{itemize}}
+
+\section{Academic Research \& Projects}
+\cventry{Jan 2025 -- Present}{Multi-cloud Hybrid GPU Clusters for AI Workloads}{Stony Brook University}{Stony Brook, New York}{}{
+    \begin{itemize}
+        \item Set up a 3-node Kubernetes cluster using Ansible and Terraform to utilize NVIDIA GPU cards.
+        \item Migrated cluster storage to NFS to enable a transition to high-speed GPFS storage.
+        \item Investigated AI/ML workload performance on running nodes.
+        \item Developed a prediction model to forecast GPU performance for workloads.
+        \item Rescheduled AI/ML jobs based on performance using a custom scheduler called Autopilot by IBM.
+    \end{itemize}}
+\cventry{Feb 2025 -- Apr 2025}{Telescope Proxy: Smart ABR for InterPlanetary File System}{Stony Brook University}{Stony Brook, New York}{}{
+    \begin{itemize}
+        \item Built a proxy using Go-Fiber to enhance video streaming with IPFS as the storage backend.
+        \item Dynamically adjusted bandwidth predictions by incorporating probabilistic models for replica selection, enabling more accurate quality adaptation in multi-replica environments.
+        \item Replaces stateful proxy servers with scalable, stateless services.
+        \item Added File-based segment cache tracking system for better cache management.
+        \item Collected real-time metrics with Prometheus and implemented distributed tracing using OpenTelemetry (Jaeger).
+    \end{itemize}}
+\cventry{May 2022 -- Dec 2023}{PTaaS (Penetration Testing as a Service)}{Amirkabir University}{Tehran, Iran}{}{
+    \begin{itemize}
+        \item Developed a full-stack service using Golang, Vue.js, and PostgreSQL to perform automated penetration testing.
+        \item Used Nmap to detect system vulnerabilities.
+        \item Wrote simple Go scripts to perform various tests.
+        \item Developed an orchestration system to run tests in parallel within isolated environments.
+    \end{itemize}}
+
+\section{Independent Projects}
+\cvitem{NFS Metrics Exporter}{Technologies: Go, Prometheus, NFS
+    \begin{itemize}
+        \item Developed a cloud native Prometheus exporter for exporting NFS computation metrics from client side.
+    \end{itemize}}
+\cvitem{Amazon EC2 Practice}{Technologies: Go, PostreSQL, Docker, NginX, Kubernetes, Ansible, Terraform
+    \begin{itemize}
+        \item Built a full-stack application (frontend, backend, and database), containerized it with Docker, and deployed it with Nginx on a system provisioned with Ansible and Terraform. Provided Docker images and Helm charts for Kubernetes deployment.
+    \end{itemize}}
+\cvitem{MQTT Blackbox Exporter}{Technologies: Go, Prometheus, Jaeger, EMQX, Helm Charts
+    \begin{itemize}
+        \item Developed a system to connect, subscribe and publish over MQTT broker to check its status.
+    \end{itemize}}
+\cvitem{Apaxos}{Technologies: Go, MongoDB, PAXOS, gRPC
+    \begin{itemize}
+        \item Developed a distributed transaction management service designed to replicate transactions across multiple nodes, ensure data consistency, and tolerate node failures. To achieve these goals, a modified version of the PAXOS consensus protocol was used to support multiple values in a single instance.
+    \end{itemize}}
+\cvitem{PBFT}{Technologies: Go, MongoDB, PBFT, TLS/SSL, Threshold Signature
+    \begin{itemize}
+        \item Developed a transaction management system that operates in an insecure environment using the Linear-PBFT consensus protocol, implementing both normal operation and view-change routines.
+    \end{itemize}}
+\cvitem{System-call Blocker}{Technologies: C, eBPF, BCC, LSM
+    \begin{itemize}
+        \item Used eBPF and LSM probes to block file creation, command execution, and network connections for subjects.
+    \end{itemize}}
+\cvitem{ELK Operator}{Technologies: Go, Operator-SDK, Kubernetes
+    \begin{itemize}
+        \item A Kubernetes operator for setting up Elasticsearch, Logstash, and Kibana instances on your cluster.
+    \end{itemize}}
+\cvitem{SafeX}{Technologies: C, Ptrace, Function-hooking
+    \begin{itemize}
+        \item Built a sandboxing tool that redirects file writes to \texttt{/tmp} and blocks access to paths listed in \texttt{\textasciitilde{}/.safenoread}.
+    \end{itemize}}
+
+\section{Leadership Experience}
+\cventry{Aug 2024 -- Dec 2024}{Operating Systems Teaching Assistant}{Stony Brook University}{Stony Brook, New York}{}{
+    \begin{itemize}
+        \item Led lab and recitation sessions for 40 students, focusing on operating systems, Linux, and XV6.
+        \item Collaborated with faculty and fellow TAs to design and evaluate assignments, provide one-on-one student support, and enhance course materials.
+    \end{itemize}}
+\cventry{Jan 2023 -- May 2023}{Cloud Computing Teaching Assistant}{Amirkabir University}{Tehran, Iran}{}{
+    \begin{itemize}
+        \item Led lab sessions for 70 students, teaching virtualization, QEMU, Docker, and Kubernetes.
+        \item Delivered live sessions on practical Docker and Kubernetes usage for developers.
+    \end{itemize}}
+\cventry{Apr 2022 -- May 2022}{Secretary and organizer of the 13th Linux Festival}{Amirkabir University}{Tehran, Iran}{}{
+    \begin{itemize}
+        \item Organized a weekly festival focused on Linux and open-source projects.
+        \item Hosted over 14 technical talks and workshops for more than 120 participants.
+    \end{itemize}}
+
+\section{Publications \& Recognitions}
+\cvitem{Publication}{Amir Zadeh. \textit{Having Your Kubernetes Over NFS}. Published on the ITNEXT platform on Medium. Visit at \url{https://itnext.io/having-your-kubernetes-over-nfs-0510d5ed9b0b}}
+\cvitem{Publication}{Amir Zadeh, Seyed Ahmad Javadi. \textit{Jump Over Golang Channels: A Method to Prioritize Tasks in Go Channel Queues}. This paper presents a solution to bypass low-priority tasks in Golang channel queues and compares its performance to traditional Go channels. Published on ResearchGate. Visit at \url{http://dx.doi.org/10.13140/RG.2.2.28045.92646}}
+
+\end{document}
