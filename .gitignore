@@ -1,0 +1,16 @@
+# Latex Out
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+
+# OS
+.DS_Store
+
+# Editor
+*.swp
+.idea/
+.vscode/
