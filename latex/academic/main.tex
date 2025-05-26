@@ -1,0 +1,417 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1.5 cm, % seperation between body and page edge from the top
+    bottom=1.5 cm, % seperation between body and page edge from the bottom
+    left=1.5 cm, % seperation between body and page edge from the left
+    right=1.5 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+]{geometry} % for adjusting page geometry
+
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 180} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage{ragged2e}   % Import the package
+
+\usepackage[
+    pdftitle={Amirhossein.Najafizadeh.CV},
+    pdfauthor={Amirhossein Najafizadeh},
+    pdfcreator={Latex},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}  % Clears the header and footer
+\fancyfoot[C]{\thepage}  % Places page number in the center of the footer
+\renewcommand{\headrulewidth}{0pt}  % Removes the top border
+
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$ $}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Amirhossein Najafizadeh
+        
+        \vspace{5 pt}
+        
+        \normalsize
+        \mbox{\faIcon{phone} +1 (111)111-1111}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\faIcon{envelope} \hrefWithoutArrow{mailto:Amirhossein.Najafizadeh}{Amirhossein.Najafizadeh}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\faIcon{globe-americas} \hrefWithoutArrow{https://amirhnajafiz.github.io/}{https://amirhnajafiz.github.io}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\faIcon{linkedin} \hrefWithoutArrow{https://linkedin.com/in/amirnhnajafiz21}{linkedin.com/in/amirnhnajafiz21}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\faIcon{github} \hrefWithoutArrow{https://github.com/amirhnajafiz}{github.com/amirhnajafiz}}%
+    \end{header}
+
+    \vspace{5 pt}
+
+    \section{Research Interests}
+        \begin{onecolentry}
+            Distributed Systems \hfill Virtualization \hfill Computer Networks \hfill Systems Security
+        \end{onecolentry}
+
+    \section{Education}
+        \begin{twocolentry}{2024 – Present}
+            Ph.D. in Computer Science, \textbf{Stony Brook University}
+        \end{twocolentry}
+        \vspace{0.2 cm}
+        \begin{twocolentry}{2018 – 2023}
+            B.Sc. in Computer Engineering, \textbf{Amirkabir University of Technology}
+        \end{twocolentry}
+
+    \section{Skills}
+        \begin{onecolentry}
+            \textbf{Languages:} Go (4 years), \hfill Python (4 years), \hfill JavaScript (3 years), \hfill C/C++ (3 years), \hfill Java (1 year), \hfill Rust (6 months)
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Containerization \& Virtualization:} QEMU, \hfill Docker, \hfill Kubernetes, \hfill OpenShift, \hfill OpenStack, \hfill Operator SDK, \hfill Kubebuilder
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Monitoring \& Debugging:} GDB, \hfill Ptrace, \hfill Pintool, \hfill Elasticsearch, \hfill Kibana, \hfill Logstash, \hfill Prometheus, \hfill Grafana, \hfill Thanos
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Version Control \& Configuration :} Git, \hfill Ansible, \hfill SSH, \hfill Helm Charts, \hfill Operator Lifecycle Management, \hfill Gitlab CI, \hfill ArgoCD
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Network \& Security :} Wireshark, \hfill WebRTC, \hfill gRPC, \hfill, Nginx, \hfill HAProxy, \hfill Nmap, \hfill LSM, \hfill eBPF, \hfill Cilium, \hfill Keycloak, \hfill Istio
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Databases:} SQL, \hfill MySQL, \hfill PostgresQL, \hfill MinIO, \hfill Ceph, \hfill CassandraDB, \hfill MongoDB, \hfill Redis, \hfill ETCD, \hfill Harbor Image Registery
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Distributed Systems:} RAFT, Paxos, Multi-Paxos, PBFT, Blockchain, EMQX, Kafka, RabbitMQ, NATS
+        \end{onecolentry}
+
+    \section{Research}
+        \begin{samepage}
+            \begin{onecolentry}
+                \textbf{PTaaS (Penetration Testing as a Service)} \hfill 2024 - AUT\\
+                \noindent\justifying
+                For my bachelor's thesis, I developed a distributed system to automate penetration testing for cloud-native applications. This system improved cloud security and reduced the costs of manual testing.
+            \end{onecolentry}
+            \vspace{0.15 cm}
+            \begin{onecolentry}
+                \textbf{QJUMP over Linux Network Interface Card} \hfill 2023 - AUT\\
+                \noindent\justifying
+                Under the supervision of Dr. Javadi, I conducted a research project using eBPF in Linux to prioritize network packets, filter irrelevant traffic, and dynamically rebalance network queues during high-traffic periods.
+            \end{onecolentry}
+            \vspace{0.15 cm}
+            \begin{onecolentry}
+                \textbf{Jump Go Channels} \hfill 2023 - AUT\\
+                \noindent\justifying
+                Under the supervision of Dr. Javadi, I conducted a research project to enhance Golang channels by integrating priority queue support. This enabled more efficient rescheduling of items based on priority levels, improving overall performance.
+            \end{onecolentry}
+            \vspace{0.15 cm}
+            \begin{onecolentry}
+                \textbf{MQTT Blackbox Exporter} \hfill 2022 - Snapp\\
+                \noindent\justifying
+                As part of a group project at Snapp, we developed a cloud-native system using the Go programming language to integrate with EMQX real-time clusters, enhancing monitoring and troubleshooting capabilities.
+            \end{onecolentry}
+            \vspace{0.15 cm}
+            \begin{onecolentry}
+                \textbf{NATS Benchmarking using T-test} \hfill 2024 - Snapp-Cloud\\
+                \noindent\justifying
+                As a project at Snapp-Cloud, I benchmarked the NATS message broker using hypothesis testing to assess its performance under various configurations, such as replication, queue size, stream replication, and delivery policies.
+            \end{onecolentry}
+        \end{samepage}
+
+    \section{Professional Experience}
+        \begin{onecolentry}
+            \textbf{Research Assistant at FSL} \hfill Jan 2025\\
+            \noindent\justifying
+            I am serving as a research project assistant in the File systems and Storage Lab under supervison of Prof.Erez Zadok. My projects focus on reliable and secure distributed file systems, storage solutions, cloud storage, and cloud-native apps.
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Cloud Engineer at Snapp-Cloud} \hfill Jan 2023 - Aug 2024\\
+            \noindent\justifying
+            I was a member of the Platform and App Delivery teams, responsible for managing OpenShift clusters and Kubernetes operators. My tasks included managing virtual machines using OpenStack, and implementing logging and monitoring systems like Prometheus and Thanos. I also supported continuous delivery through Gitlab runners and ArgoCD.
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Software Engineer Intern at Snapp} \hfill Jun 2022 - Dec 2022\\
+            \noindent\justifying
+            I worked as a back-end development intern, responsible for maintaining VoIP, in-app chat, and CMQ services. My tasks included managing real-time services such as Kafka, NATS, and EMQX.
+        \end{onecolentry}
+
+    \section{Projects}    
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Stallion}: Developed a high-performance message broker using the Go programming language, leveraging channels as queues to deliver messages with low latency for stateless applications.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Cloud Provider}: Implemented a local VM-as-a-Service system using Python, QEMU, and the RabbitMQ message broker to set up UNIX virtual machines for AUT students use.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Safex}: Built an application sandbox using C and ptrace to block unauthorized file access in Linux and redirect write operations to temporary files, enhancing system security against malicious applications.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{APAXOS}: Built a distributed block transaction management system using a modified Paxos protocol to scale transaction processing across multiple nodes.
+        \end{onecolentry}
+            \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{PBFT}: Implemented distributed transaction management for unsafe environments using Paxos and BFT to replicate transaction management in untrusted settings while scaling the system.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Sanjab}: Built a Kubernetes operator using Golang and Kubebuilder to store K8S objects in Ceph storage, serving as a persistent backup in case of ETCD failures.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Ghoster}: Implemented a serverless distributed system using Golang and MongoDB to execute Go programs seamlessly, without the need for Dockerfiles or Kubernetes manifests for deployment.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Blocker}: Used eBPF and LSM to block file, program, and network access for applications in Linux, enhancing security and monitoring when running malicious applications.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{CAAAS}: Built a central authentication and authorization service using Golang and PostgreSQL for managing Kubernetes users, roles, teams, and namespaces.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Jetstream Mirroring}: Securely mirrored NATS input traffic to different clusters using Benthos, replicating the NATS message broker across multiple geographical locations.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Strago}: Implemented a fast distributed traffic controller using Golang to load-balance traffic between different applications, enhancing the system's fault tolerance.
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            \noindent\justifying
+            \textbf{Soteria}: Developed a plugin in Golang responsible for authenticating and authorizing every request sent to EMQ, securing EMQX clusters at the application level.
+        \end{onecolentry}
+
+    \section{Teaching Assistant}
+        \begin{twocolentry}{Fall 2024 - SBU}
+            \textbf{Operating Systems}, Prof. Stark
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        \begin{twocolentry}{Fall 2023 - AUT}
+            \textbf{Web Engineering}, Prof. Alvani
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        \begin{twocolentry}{Spring 2023 - AUT}
+            \textbf{Cloud Computing}, Prof. Javadi
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        \begin{twocolentry}{Spring 2023 - AUT}
+            \textbf{Computer Networks}, Prof. Sadeghian
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        \begin{twocolentry}{Fall 2022 - AUT}
+            \textbf{Operating Systems}, Prof. Javadi
+        \end{twocolentry}
+        \vspace{0.1 cm}
+        \begin{twocolentry}{Fall 2022 - AUT}
+            \textbf{Database Design}, Prof. Momtazi
+        \end{twocolentry}
+
+    \section{Teaching Experience}
+        \begin{onecolentry}
+            \textbf{Software Engineering} \hfill Spring 2024 - AUT\\
+            Teaching the concepts of continuous integration and delivery using GitLab CI and Jenkins.
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry} 
+            \textbf{Web Engineering} \hfill Fall 2023 - AUT\\
+            Teaching web development and security policies for building secure web apps and ensuring the trustworthiness of them.
+        \end{onecolentry}
+        \vspace{0.15 cm}
+        \begin{onecolentry}
+            \textbf{Cloud Computing} \hfill Spring 2023 - AUT\\
+            Teaching the fundamentals of containers in Linux and their use in Docker container orchestration. Teaching the concepts of the QEMU, and its role in creating virtual machines.
+        \end{onecolentry}
+
+    \section{Honors \& Volunteers}
+        \begin{onecolentry}
+            Awarded a one-year full scholarship at Stony Brook University for being among the top applicants. \hfill 2024
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            Graduated in the top 10\% of the Computer Engineering department's students of AUT. \hfill 2024
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            Co-founder of the ResearchCamp organization, focused on projects in distributed cache systems. \hfill 2021 - 2023
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            The main secretary and organizer of the 13th Linux \& Open-source Festival at AUT. \hfill 2022
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            Member of the 2022 ICPC organizers for the West Asia first round competition in Iran. \hfill 2022
+        \end{onecolentry}
+        \vspace{0.1 cm}
+        \begin{onecolentry}
+            Member of the 16th term of the Scientific Association of the Faculty of Computer Engineering at AUT. \hfill 2021 - 2022
+        \end{onecolentry}
+
+\end{document}
