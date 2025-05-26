@@ -14,3 +14,6 @@
 *.swp
 .idea/
 .vscode/
+
+# Docker
+output/

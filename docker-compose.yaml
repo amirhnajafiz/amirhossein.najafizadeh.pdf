@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  latex:
+    build:
+      context: latex/academic/
+      dockerfile: ../../build/Dockerfile
+    volumes:
+      - ./latex/academic:/project
+      - ./output:/output
+    command: >
+      sh -c "
+        pdflatex -interaction=nonstopmode -output-directory=/output main.tex &&
+        bibtex /output/main || true &&
+        pdflatex -interaction=nonstopmode -output-directory=/output main.tex &&
+        pdflatex -interaction=nonstopmode -output-directory=/output main.tex
+      "
