@@ -12,6 +12,7 @@
 
 % Changing the size of my name
 \renewcommand*{\namefont}{\fontsize{16}{18}\selectfont}
+\hbadness=99999  % or any number >=10000
 
 % Personal information
 \name{Amirhossein}{Najafizadeh}
@@ -20,6 +21,9 @@
 \email{Amirhossein.Najafizadeh}
 \social[linkedin]{linkedin.com/in/amirnhnajafiz21}
 \social[github]{github.com/amirhnajafiz}
+
+% Add desired position/title
+\title{\textcolor{red}{\Large Cloud Engineer (DevOps / SRE)}}
 
 \begin{document}
 
@@ -42,6 +46,11 @@
 \cvitem{Storage Systems}{SQL/MySQL, PostgreSQL, MongoDB, Redis (4 years), Prometheus (2 years)}
 
 \section{Professional Experience}
+\cventry{Jan 2025 -- Present}{Research Assistant}{File systems and Storage Lab (FSL)}{CS Department, Stony Brook University, New York}{}{
+    \begin{itemize}
+        \item Leading a team of five in the SUNY/IBM collaborative project under supervision of Prof. Erez Zadok.
+        \item Responsible for task management, report writing, setting project objectives, designing cloud solutions, system administration, and managing cloud operations.
+    \end{itemize}}
 \cventry{Nov 2023 -- Aug 2024}{Cloud Engineer}{Snapp Cloud!}{Tehran, Iran}{}{
     \begin{itemize}
         \item Maintained and deployed Operators on Kubernetes and OpenShift platforms, utilizing tools such as OLM and Helm Charts for applications including StreamZ, RedisCluster, and PostgreSQL.
@@ -59,22 +68,15 @@
     \end{itemize}}
 
 \section{Academic Research \& Projects}
-\cventry{Jan 2025 -- Present}{Multi-cloud Hybrid GPU Clusters for AI Workloads}{Stony Brook University}{Stony Brook, New York}{}{
+\cventry{Jan 2025 -- Present}{Multi-cloud Hybrid GPU Clusters for AI Workloads}{SUNY / IBM}{Stony Brook, New York}{}{
     \begin{itemize}
-        \item Set up a 3-node Kubernetes cluster using Ansible and Terraform to utilize NVIDIA GPU cards.
-        \item Migrated cluster storage to NFS to enable a transition to high-speed GPFS storage.
-        \item Investigated AI/ML workload performance on running nodes.
-        \item Developed a prediction model to forecast GPU performance for workloads.
-        \item Rescheduled AI/ML jobs based on performance using a custom scheduler called Autopilot by IBM.
-    \end{itemize}}
-\cventry{Feb 2025 -- Apr 2025}{Telescope Proxy: Smart ABR for InterPlanetary File System}{Stony Brook University}{Stony Brook, New York}{}{
-    \begin{itemize}
-        \item Built a proxy using Go-Fiber to enhance video streaming with IPFS as the storage backend.
-        \item Dynamically adjusted bandwidth predictions by incorporating probabilistic models for replica selection, enabling more accurate quality adaptation in multi-replica environments.
-        \item Replaces stateful proxy servers with scalable, stateless services.
-        \item Added File-based segment cache tracking system for better cache management.
-        \item Collected real-time metrics with Prometheus and implemented distributed tracing using OpenTelemetry (Jaeger).
-    \end{itemize}}
+    \item Deployed a 3-node Kubernetes cluster using Ansible and Terraform with NVIDIA GPU support.
+    \item Installed monitoring tools, app delivery plugins, and essential operators for AI/ML workload orchestration.
+    \item Migrated cluster storage from local volumes to NFS as a staging layer for high-speed GPFS integration.
+    \item Investigated GPU failures during AI/ML execution.
+    \item Designed a reinforcement learning-based model to predict failures and detect infrastructure issues in cloud-native environments.
+    \item Contributed to \textbf{Autopilot}, an IBM Research open-source Kubernetes-native daemon that continuously monitors GPU, network, and storage health to identify infrastructure-level issues in real time during AI workload execution.
+\end{itemize}}
 \cventry{May 2022 -- Dec 2023}{PTaaS (Penetration Testing as a Service)}{Amirkabir University}{Tehran, Iran}{}{
     \begin{itemize}
         \item Developed a full-stack service using Golang, Vue.js, and PostgreSQL to perform automated penetration testing.
@@ -84,37 +86,49 @@
     \end{itemize}}
 
 \section{Independent Projects}
-\cvitem{NFS Metrics Exporter}{Technologies: Go, Prometheus, NFS
+\cvitem{NFS Metrics Exporter}{Go, Prometheus, NFS
     \begin{itemize}
         \item Developed a cloud native Prometheus exporter for exporting NFS computation metrics from client side.
     \end{itemize}}
-\cvitem{Amazon EC2 Practice}{Technologies: Go, PostreSQL, Docker, NginX, Kubernetes, Ansible, Terraform
+\cvitem{Amazon E2E Practice}{Go, PostreSQL, Docker, NginX, Terraform
     \begin{itemize}
-        \item Built a full-stack application (frontend, backend, and database), containerized it with Docker, and deployed it with Nginx on a system provisioned with Ansible and Terraform. Provided Docker images and Helm charts for Kubernetes deployment.
+        \item Developed a full-stack application, containerized it using Docker, and deployed it with Nginx on a virtual machine set up using Terraform.
     \end{itemize}}
-\cvitem{MQTT Blackbox Exporter}{Technologies: Go, Prometheus, Jaeger, EMQX, Helm Charts
+\cvitem{Radosh}{C++, Librados, Ceph, RadosGW
+    \begin{itemize}
+        \item Developed a C++ CLI tool (RADOS Shell) for direct interaction with Ceph object storage.
+    \end{itemize}}
+\cvitem{Kubernetes Local Storage Metrics Exporter}{Go, Prometheus, Kubelet
+    \begin{itemize}
+        \item Built a Prometheus exporter to collect and expose local storage usage metrics for Kubernetes pods.
+    \end{itemize}}
+\cvitem{MQTT Blackbox Exporter}{Go, Prometheus, Jaeger, EMQX, Helm Charts
     \begin{itemize}
         \item Developed a system to connect, subscribe and publish over MQTT broker to check its status.
     \end{itemize}}
-\cvitem{Apaxos}{Technologies: Go, MongoDB, PAXOS, gRPC
+\cvitem{Apaxos}{Go, MongoDB, gRPC
     \begin{itemize}
-        \item Developed a distributed transaction management service designed to replicate transactions across multiple nodes, ensure data consistency, and tolerate node failures. To achieve these goals, a modified version of the PAXOS consensus protocol was used to support multiple values in a single instance.
+        \item Developed a distributed transaction management service designed to replicate transactions across multiple nodes, ensure data consistency, and tolerate node failures using PAXOS.
     \end{itemize}}
-\cvitem{PBFT}{Technologies: Go, MongoDB, PBFT, TLS/SSL, Threshold Signature
+\cvitem{PBFT}{Go, MongoDB, TLS/SSL, Threshold Signature
     \begin{itemize}
-        \item Developed a transaction management system that operates in an insecure environment using the Linear-PBFT consensus protocol, implementing both normal operation and view-change routines.
+        \item Developed a transaction management system that operates in an insecure environment using the Linear-PBFT consensus protocol.
     \end{itemize}}
-\cvitem{System-call Blocker}{Technologies: C, eBPF, BCC, LSM
+\cvitem{System-call Blocker}{C, eBPF, BCC, LSM
     \begin{itemize}
         \item Used eBPF and LSM probes to block file creation, command execution, and network connections for subjects.
     \end{itemize}}
-\cvitem{ELK Operator}{Technologies: Go, Operator-SDK, Kubernetes
+\cvitem{Stallion}{Go, Docker
     \begin{itemize}
-        \item A Kubernetes operator for setting up Elasticsearch, Logstash, and Kibana instances on your cluster.
+        \item A fast message broker implemented with Golang programming language.
     \end{itemize}}
-\cvitem{SafeX}{Technologies: C, Ptrace, Function-hooking
+\cvitem{ELK Operator}{Go, Operator-SDK, Kubernetes
     \begin{itemize}
-        \item Built a sandboxing tool that redirects file writes to \texttt{/tmp} and blocks access to paths listed in \texttt{\textasciitilde{}/.safenoread}.
+        \item An operator for setting up Elasticsearch, Logstash, and Kibana instances on Kubernetes clusters.
+    \end{itemize}}
+\cvitem{SafeX}{C, Ptrace, Function-hooking
+    \begin{itemize}
+        \item Built a sandbox that redirects file writes to \texttt{/tmp} and blocks access to paths listed in \texttt{\textasciitilde{}/.safenoread}.
     \end{itemize}}
 
 \section{Leadership Experience}
@@ -136,6 +150,5 @@
 
 \section{Publications \& Recognitions}
 \cvitem{Publication}{Amir Zadeh. \textit{Having Your Kubernetes Over NFS}. Published on the ITNEXT platform on Medium. Visit at \url{https://itnext.io/having-your-kubernetes-over-nfs-0510d5ed9b0b}}
-\cvitem{Publication}{Amir Zadeh, Seyed Ahmad Javadi. \textit{Jump Over Golang Channels: A Method to Prioritize Tasks in Go Channel Queues}. This paper presents a solution to bypass low-priority tasks in Golang channel queues and compares its performance to traditional Go channels. Published on ResearchGate. Visit at \url{http://dx.doi.org/10.13140/RG.2.2.28045.92646}}
 
 \end{document}
